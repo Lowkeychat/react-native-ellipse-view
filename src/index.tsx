@@ -24,7 +24,6 @@ const EllipseView = (props: {
   borderRadius?: number;
 }) => {
   const containerStyle = Object.assign({}, props.style);
-  const borderRadius = props.borderRadius ? props.borderRadius : 20;
 
   if (Platform.OS === 'ios') {
     // Cleanup the container styles
@@ -44,24 +43,14 @@ const EllipseView = (props: {
       </View>
     );
   } else {
-    return (
-      <View
-        {...props}
-        style={[
-          props.style,
-          styles.androidContainer,
-          {
-            borderRadius,
-          },
-        ]}
-      />
-    );
+    return <View {...props} style={[props.style, styles.androidContainer]} />;
   }
 };
 
 const styles = StyleSheet.create({
   androidContainer: {
     overflow: 'hidden',
+    borderRadius: 10000,
   },
 });
 
